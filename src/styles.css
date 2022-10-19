@@ -1,1 +1,60 @@
+@import url("https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&display=swap");
 /* You can add global styles to this file, and also import other style files */
+body {
+  background-color: #212529;
+  color: #fff;
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+}
+
+header {
+  background-image: url(../src/assets/mountain.png);
+  background-size: cover;
+  background-position: center center;
+  padding: 10px;
+  margin-bottom: 20px;
+}
+
+a,
+a:hover {
+  text-decoration: none;
+  color: #fff;
+}
+
+.section-title {
+  width: 75%;
+  position: relative;
+}
+
+.section-title h2 {
+  line-height: 1.3;
+}
+
+.section-title p {
+  font-size: 1.2rem;
+}
+
+.section-title::before,
+.section-title::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  width: 100%;
+  height: 3px;
+  background-color: #a1a1a148;
+}
+
+.section-title::before {
+  top: 18px;
+}
+.section-title::after {
+  bottom: 18px;
+}
+
+.movie img {
+  height: 288.8px;
+}
+
+.login,
+.reg {
+  height: 520px;
+}

@@ -1,0 +1,60 @@
+<div class="container">
+  <div class="row">
+    <div class="col-md-5">
+      <div class="img p-5 pe-4">
+        <img
+          [src]="
+            personDetails.profile_path != null
+              ? imgPrefix + personDetails.profile_path
+              : '../../assets/placeholder-image.png'
+          "
+          class="img-fluid"
+        />
+      </div>
+    </div>
+    <div class="col-md-7">
+      <div class="text pt-5">
+        <h2 class="mb-4">{{ personDetails.name }}</h2>
+        <p class="lead">
+          {{ personDetails.biography | slicepart: 40:" etc" }}
+        </p>
+        <p class="lead">
+          <span class="badge bg-primary"
+            >Rating: {{ personDetails.popularity }}</span
+          >
+        </p>
+        <p class="lead">
+          <span class="badge bg-primary"
+            >Birth Date: {{ personDetails.birthday }}</span
+          >
+        </p>
+        <p class="lead">
+          <span class="badge bg-primary"
+            >Popularity: {{ personDetails.popularity }}</span
+          >
+        </p>
+        <p class="lead">
+          <span class="badge bg-primary"
+            >place of birth: {{ personDetails.place_of_birth }}</span
+          >
+        </p>
+        <p class="lead">
+          <span class="badge bg-primary"
+            >Department: {{ personDetails.known_for_department }}</span
+          >
+        </p>
+        <p class="lead">
+          <span class="badge bg-primary"
+            >imdb link:
+            <a
+              class="text-decoration-underline"
+              target="_blank"
+              [href]="'https://www.imdb.com/name/' + personDetails.imdb_id"
+              >https://www.imdb.com/name/{{ personDetails.imdb_id }}/</a
+            ></span
+          >
+        </p>
+      </div>
+    </div>
+  </div>
+</div>

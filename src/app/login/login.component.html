@@ -1,0 +1,70 @@
+<div class="login container d-flex align-items-center flex-wrap">
+  <!-- <div>{{ loginForm.get("first_name")?.errors | json }}</div> -->
+  <div *ngIf="errorMessage" class="alert alert-danger p-3 w-100">
+    {{ errorMessage }}
+  </div>
+  <form class="w-75 mx-auto" [formGroup]="loginForm" (ngSubmit)="submitForm()">
+    <div class="form-group my-3">
+      <label for="email">Email</label>
+      <input
+        type="email"
+        class="form-control"
+        id="email"
+        formControlName="email"
+      />
+      <div
+        *ngIf="
+          loginForm.get('email')?.errors && loginForm.get('email')?.touched
+        "
+      >
+        <p
+          class="alert alert-danger p-1"
+          *ngIf="loginForm.get('email')?.getError('required')"
+        >
+          email is required
+        </p>
+        <p
+          class="alert alert-danger p-1"
+          *ngIf="loginForm.get('email')?.getError('email')"
+        >
+          email is not valid
+        </p>
+      </div>
+    </div>
+    <div class="form-group my-3">
+      <label for="password">Password</label>
+      <input
+        type="password"
+        class="form-control"
+        id="password"
+        formControlName="password"
+      />
+      <div
+        *ngIf="
+          loginForm.get('password')?.errors &&
+          loginForm.get('password')?.touched
+        "
+      >
+        <p
+          class="alert alert-danger p-1"
+          *ngIf="loginForm.get('password')?.getError('required')"
+        >
+          password is required
+        </p>
+        <p
+          class="alert alert-danger p-1"
+          *ngIf="loginForm.get('password')?.getError('pattern')"
+        >
+          password must be at least 8 characters starting with a capital letter
+        </p>
+      </div>
+    </div>
+    <!-- !loginForm.valid == loginForm.invalid -->
+    <button type="submit" class="btn btn-primary" [disabled]="!loginForm.valid">
+      <span *ngIf="isLoading">
+        <i class="fas fa-spinner fa-spin"></i>
+      </span>
+      <span *ngIf="!isLoading">login</span>
+    </button>
+  </form>
+</div>

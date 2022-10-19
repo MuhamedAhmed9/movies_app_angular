@@ -1,0 +1,78 @@
+<div class="container">
+  <div class="row">
+    <div class="col-md-5">
+      <div class="img p-5 pe-4">
+        <img
+          [src]="
+            movieDetails.poster_path != null
+              ? imgPrefix + movieDetails.poster_path
+              : '../../assets/placeholder-image.png'
+          "
+          class="img-fluid"
+        />
+      </div>
+    </div>
+    <div class="col-md-7">
+      <div class="text pt-5">
+        <h2 class="mb-4">{{ movieDetails.title }}</h2>
+        <p class="lead">
+          {{ movieDetails.overview | slicepart: 40:" etc" }}
+        </p>
+        <p class="lead">
+          <span class="badge bg-primary"
+            >Original Title: {{ movieDetails.original_title }}</span
+          >
+        </p>
+        <p class="lead">
+          <span class="badge bg-primary me-3">Genre: </span>
+          <span *ngFor="let genre of movieDetails.genres"
+            ><span class="mx-1 fs-6 badge bg-danger">{{
+              genre.name
+            }}</span></span
+          >
+        </p>
+        <p class="lead">
+          <span class="badge bg-primary"
+            >Rating: {{ movieDetails.vote_average }}</span
+          >
+        </p>
+        <p class="lead">
+          <span class="badge bg-primary"
+            >Release Date: {{ movieDetails.release_date }}</span
+          >
+        </p>
+        <p class="lead">
+          <span class="badge bg-primary"
+            >Popularity: {{ movieDetails.popularity }}</span
+          >
+        </p>
+        <p class="lead">
+          <span class="badge bg-primary"
+            >Vote Count: {{ movieDetails.vote_count }}</span
+          >
+        </p>
+        <p class="lead">
+          <span class="badge bg-primary"
+            >Original Language: {{ movieDetails.original_language }}</span
+          >
+        </p>
+
+        <p class="lead">
+          <span class="badge bg-primary">Adult: {{ movieDetails.adult }}</span>
+        </p>
+
+        <p class="lead">
+          <span class="badge bg-primary"
+            >imdb link:
+            <a
+              class="text-decoration-underline"
+              target="_blank"
+              [href]="'https://www.imdb.com/title/' + movieDetails.imdb_id"
+              >https://www.imdb.com/name/{{ movieDetails.imdb_id }}/</a
+            ></span
+          >
+        </p>
+      </div>
+    </div>
+  </div>
+</div>

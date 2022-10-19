@@ -1,0 +1,36 @@
+<div class="w-50 my-5 mx-auto">
+  <input
+    [(ngModel)]="term"
+    placeholder="search by title ..."
+    class="form-control"
+    type="text"
+  />
+</div>
+<div class="row gy-2 mb-4">
+  <div *ngFor="let movie of trendingTvShows" class="col-md-2">
+    <div class="movie p-1">
+      <a [routerLink]="['/tvdetails', movie.id]">
+        <img
+          [src]="
+            movie.poster_path != null
+              ? imgPrefix + movie.poster_path
+              : '../../assets/placeholder-image.png'
+          "
+          class="img-fluid"
+        />
+        <h3 class="h5 text-center title">{{ movie.name | watch }}</h3>
+      </a>
+    </div>
+  </div>
+</div>
+<nav aria-label="Page navigation example">
+  <ul class="pagination d-flex justify-content-center">
+    <li class="page-item"><a class="page-link" href="#">Previous</a></li>
+    <li *ngFor="let page of getTotalPages(); let i = index" class="page-item">
+      <a class="page-link" (click)="getMoviesPage((i + 1).toString())">{{
+        i + 1
+      }}</a>
+    </li>
+    <li class="page-item"><a class="page-link" href="#">Next</a></li>
+  </ul>
+</nav>

@@ -1,0 +1,65 @@
+<div class="row gy-2 mb-4">
+  <div
+    *ngFor="let movie of foundedMovies"
+    [ngClass]="{
+      'd-none': movie.poster_path == null && movie.profile_path == null
+    }"
+    class="col-md-2"
+  >
+    <div class="movie p-1">
+      <a
+        *ngIf="movie.name && movie.profile_path"
+        [routerLink]="['/actor', movie.id]"
+      >
+        <img
+          [src]="
+            movie.profile_path != null
+              ? imgPrefix + movie.profile_path
+              : '../../assets/placeholder-image.png'
+          "
+          class="img-fluid"
+        />
+        <h3 class="h5 text-center title">{{ movie.name }}</h3>
+      </a>
+      <a
+        *ngIf="movie.name && movie.poster_path"
+        [routerLink]="['/tvdetails', movie.id]"
+      >
+        <img
+          [src]="
+            movie.poster_path != null
+              ? imgPrefix + movie.poster_path
+              : '../../assets/placeholder-image.png'
+          "
+          class="img-fluid"
+        />
+        <h3 class="h5 text-center title">{{ movie.name }}</h3>
+      </a>
+      <a
+        *ngIf="movie.title && movie.poster_path"
+        [routerLink]="['/moviedetails', movie.id]"
+      >
+        <img
+          [src]="
+            movie.poster_path != null
+              ? imgPrefix + movie.poster_path
+              : '../../assets/placeholder-image.png'
+          "
+          class="img-fluid"
+        />
+        <h3 class="h5 text-center title">{{ movie.title }}</h3>
+      </a>
+    </div>
+  </div>
+</div>
+<nav aria-label="Page navigation example">
+  <ul class="pagination d-flex justify-content-center">
+    <li class="page-item"><a class="page-link" href="#">Previous</a></li>
+    <li *ngFor="let page of getTotalPages(); let i = index" class="page-item">
+      <a class="page-link" (click)="getMoviesPage((i + 1).toString())">{{
+        i + 1
+      }}</a>
+    </li>
+    <li class="page-item"><a class="page-link" href="#">Next</a></li>
+  </ul>
+</nav>
